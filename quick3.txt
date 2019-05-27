@@ -1,0 +1,38 @@
+6
+1 - Incorrect behavior - Medium
+2 - Device not working - Important
+3 - Battery drain - Important
+4 - Device immediately turns off - Critical
+5 - Strange behavior - Low
+6 - Occasionally freeze - Critical
+
+8
+1 - Incorrect behavior - Medium
+2 - Device not working - Important
+3 - Battery drain - Important
+4 - Device immediately turns off - Critical
+5 - Strange behavior - Low
+6 - Occasionally freeze - Critical
+7 - Application not working - Low
+8 - Internet connection problems - Medium)
+
+6
+1 - Incorrect behavior - Medium
+2 - Device not working - Important
+3 - Battery drain - Important
+4 - Device immediately turns off - Critical
+5 - Strange behavior - Low
+6 - Occasionally freeze - Critical
+
+1
+1 - Incorrect behavior - Medium
+
+8
+6 - Occasionally freeze - Critical
+4 - Device immediately turns off - Critical
+3 - Battery drain - Important
+2 - Device not working - Important
+1 - Incorrect behavior - Medium
+8 - Internet connection problems - Medium
+7 - Application not working - Low
+5 - Strange behavior - Low
