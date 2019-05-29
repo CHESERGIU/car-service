@@ -20,7 +20,7 @@ namespace SuportCases.Tests
             SupportTicket[] ticket = { ticket1, ticket2, ticket3, ticket4, ticket5, ticket6, ticket7, ticket8 };
             const int start = 0;
             var end = ticket.Length - 1;
-            Program.Quick3Sort(ticket, start, end);
+            SupportTicket.Quick3Sort(ticket, start, end);
             SupportTicket[] resultTickets = { ticket4, ticket6, ticket3, ticket2, ticket1, ticket5, ticket7, ticket8 };
 
             Assert.Equal(resultTickets, resultTickets);

@@ -15,5 +15,18 @@
         {
             Priority = priority;
         }
+        public static Level GetPriorityLevel(string priority)
+        {
+            switch (priority.ToLower().Trim())
+            {
+                case "critical":
+                    return Level.Critical;
+                case "important":
+                    return Level.Important;
+                case "medium":
+                    return Level.Medium;
+            }
+            return Level.Low;
+        }
     }
 }
