@@ -59,7 +59,7 @@ namespace SupportCases
             {
                 if (start >= end)
                     return;
-                var partitionIndex = Partition(tickets,start,end);
+                var partitionIndex = Partition(tickets, start, end);
                 Quick3Sort(tickets,start,partitionIndex - 1);
                 start = partitionIndex + 1;
             }
@@ -89,7 +89,7 @@ namespace SupportCases
             return result;
         }
 
-        private static PriorityLevel GetPriorityLevel(string priority)
+        public static PriorityLevel GetPriorityLevel(string priority)
         {
             switch (priority.ToLower().Trim())
             {

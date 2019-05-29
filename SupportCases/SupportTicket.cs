@@ -1,17 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using static SupportCases.SupportTicket.PriorityLevel;
 
 namespace SupportCases
 {
     public class SupportTicket
     {
-        public enum PriorityLevel
+        public class PriorityLevel
         {
-            Critical = 2,
-            Important = 4,
-            Medium = 8,
-            Low = 16
+            internal static PriorityLevel Critical;
+            internal static PriorityLevel Important;
+            internal static PriorityLevel Medium;
+            internal static PriorityLevel Low;
         }
         public readonly long Id;
         public readonly string Description;
