@@ -12,7 +12,7 @@ namespace SupportCases
             Low = 16
         }
 
-        public struct SupportTicket
+        public class SupportTicket
         {
             public readonly long Id;
             public readonly string Description;
