@@ -14,11 +14,6 @@ namespace SuportCases
             this.Description = description;
             this.Priority = priority;
         }
-        public static void Print(SupportTicket[] tickets)
-        {
-            for (var i = 0; i < tickets.Length; i++)
-                System.Console.WriteLine(tickets[i].Id + " - " + tickets[i].Description + " - " + tickets[i].Priority);
-            System.Console.Read();
-        }
+        
     }
 }
