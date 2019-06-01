@@ -12,11 +12,11 @@ namespace CarService.Tests
             var ticket3 = WaitingTime.Scheduled;
             var ticket4 = WaitingTime.Urgent;
 
-            WaitingTime[] ticket = { ticket1, ticket2, ticket3, ticket4 };
+            WaitingTime[] tickets = { ticket1, ticket2, ticket3, ticket4 };
 
             WaitingTime[] resultTickets = { ticket1, ticket2, ticket3, ticket4 };
 
-            Assert.Equal(resultTickets, resultTickets);
+            Assert.Equal(resultTickets, tickets);
         }
     }
 }

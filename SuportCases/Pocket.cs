@@ -44,9 +44,9 @@ namespace CarService
             var ticket3 = new Pocket("CJ03GHI ", "Battery drain", Scheduled);
             var ticket4 = new Pocket("CJ04JKL  ", "Engine break critical", WaitingTime.Urgent);
 
-            Pocket[] ticket = { ticket1, ticket2, ticket3, ticket4 };
+            Pocket[] tickets = { ticket1, ticket2, ticket3, ticket4 };
             
-            return ticket;
+            return tickets;
         }
 
     }
