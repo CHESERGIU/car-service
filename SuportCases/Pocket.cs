@@ -1,5 +1,5 @@
 ﻿using System;
-using static CarService.Points;
+using static CarService.WaitingTime;
 
 namespace CarService
 {
@@ -15,22 +15,21 @@ namespace CarService
             this.Problem = problem;
             this.Priority = priority;
         }
-
-        public static Pocket[] GetTickets()
+        
+        public static WaitingTime GetWaitingTime(string priority)
         {
-            var ticketsNumber = Convert.ToInt32(Console.ReadLine());
-            var result = new Pocket[ticketsNumber];
-
-            for (var i = 0; i < ticketsNumber; i++)
+            switch (priority.ToLower().Trim())
             {
-                var ticketData = Console.ReadLine()?.Split('-');
-                if (ticketData == null) continue;
-                var id = ticketData[0];
-                result[i] = new Pocket(id, ticketData[1].Trim(), GetPriorityLevel(ticketData[2]));
+                case "Urgent":
+                    return WaitingTime.Urgent;
+                case "DeadLine":
+                    return WaitingTime.DeadLine;
+                case "Delegated":
+                    return WaitingTime.Delegated;
             }
-            return result;
+
+            return WaitingTime.Scheduled;
         }
 
-       
     }
 }

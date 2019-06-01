@@ -10,11 +10,11 @@ namespace SupportCases
         [Fact]
         public void When_tickets_for_support_request_are_1_must_return_1()
         {
-            var ticket1 = Points.WaitingTime.Delegated;
+            var ticket1 = WaitingTime.Delegated;
 
-            Points.WaitingTime[] ticket = { ticket1 };
+            WaitingTime[] ticket = { ticket1 };
 
-            Points.WaitingTime[] resultTickets = {  ticket1 };
+            WaitingTime[] resultTickets = {  ticket1 };
 
             Assert.Equal(resultTickets, resultTickets);
         }

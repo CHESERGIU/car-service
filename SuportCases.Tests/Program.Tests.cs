@@ -8,7 +8,7 @@ namespace CarService.Tests
         [Fact]
         public void When_tickets_for_support_request_are_1_must_return_1()
         {
-            var ticket1 = new Pocket("CJ01ABC", "Direction check", Points.WaitingTime.Delegated);
+            var ticket1 = new Pocket("CJ01ABC", "Direction check", WaitingTime.Delegated);
 
             Pocket[] ticket = { ticket1 };
             
