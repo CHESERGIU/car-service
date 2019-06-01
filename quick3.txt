@@ -7,14 +7,14 @@
 6 - Occasionally freeze - Critical
 
 8
-1 - Incorrect behavior - Medium
-2 - Device not working - Important
-3 - Battery drain - Important
-4 - Device immediately turns off - Critical
-5 - Strange behavior - Low
-6 - Occasionally freeze - Critical
-7 - Application not working - Low
-8 - Internet connection problems - Medium)
+CJ01ABC - Direction Check - Delegated
+CJ02DEF - Lights not working - DeadLine
+CJ03GHI - Battery drain - Scheduled
+CJ04JKL - Engine break critical - Urgent
+CJ05MNO - Oil change - Scheduled
+CJ06PQR - Change radiator - DeadLine
+CJ07STU - Tunning parts - Delegated
+CJ08VWX - Electric problems - Urgent
 
 6
 1 - Incorrect behavior - Medium
@@ -36,3 +36,62 @@
 8 - Internet connection problems - Medium
 7 - Application not working - Low
 5 - Strange behavior - Low
+
+public static void Sort(Pocket[] tickets)
+        {
+            for (var i = 0; i < tickets.Length - 1; i++)
+            {
+                var smallest = i;
+                for (var j = i + 1; j < tickets.Length; j++)
+                    if (tickets[j].Priority > tickets[smallest].Priority)
+                        smallest = j;
+                Swap(tickets, i, smallest);
+                
+            }
+        }
+
+        private static void Swap(Pocket[] tickets, int i, int smallest)
+        {
+            var temp = tickets[smallest];
+            tickets[smallest] = tickets[i];
+            tickets[i] = temp;
+            
+        }
+
+
+
+[Fact]
+        public void When_tickets_for_support_request_are_8_must_rearrange_in_priority_level()
+        {
+            var ticket1 = new Pocket("CJ01ABC", "Incorrect behavior", Priority.Level.Medium);
+            var ticket2 = new Pocket("CJ01DEF", "Device not working", Priority.Level.Important);
+            var ticket3 = new Pocket("CJ01GHI", "Battery drain", Priority.Level.Important);
+            var ticket4 = new Pocket("CJ01JKL", "Device immediately turns off", Priority.Level.Critical);
+            var ticket5 = new Pocket("CJ01MNO", "Strange behavior", Priority.Level.Low);
+            var ticket6 = new Pocket("CJ01PQR", "Occasionally freeze", Priority.Level.Critical);
+            var ticket7 = new Pocket("CJ01STU", "Application not working", Priority.Level.Low);
+            var ticket8 = new Pocket("CJ01VWX", "Internet connection problems", Priority.Level.Medium);
+
+            Pocket[] ticket = { ticket1, ticket2, ticket3, ticket4, ticket5, ticket6, ticket7, ticket8 };
+            
+            Pocket[] resultTickets = { ticket4, ticket6, ticket3, ticket2, ticket1, ticket5, ticket7, ticket8 };
+
+            Assert.Equal(resultTickets, resultTickets);
+        }
+
+
+
+var ticket1 = Priority.Level.Medium;
+            var ticket2 = Priority.Level.Important;
+            var ticket3 = Priority.Level.Important;
+            var ticket4 = Priority.Level.Critical;
+            var ticket5 = Priority.Level.Low;
+            var ticket6 = Priority.Level.Critical;
+            var ticket7 = Priority.Level.Low;
+            var ticket8 = Priority.Level.Medium;
+
+            Priority.Level[] ticket = { ticket1, ticket2, ticket3, ticket4, ticket5, ticket6, ticket7, ticket8 };
+
+            Priority.Level[] resultTickets = { ticket4, ticket6, ticket3, ticket2, ticket1, ticket5, ticket7, ticket8 };
+
+            Assert.Equal(resultTickets, resultTickets);
