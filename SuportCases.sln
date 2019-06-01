@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.329
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuportCases", "SuportCases\SuportCases.csproj", "{C34FA9D1-DBF1-4245-AB95-E4BED7B4118D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarService", "SuportCases\CarService.csproj", "{C34FA9D1-DBF1-4245-AB95-E4BED7B4118D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuportCases.Tests", "SuportCases.Tests\SuportCases.Tests.csproj", "{9E340D46-0EC5-4028-90EC-61807E4B9D08}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarService.Tests", "SuportCases.Tests\CarService.Tests.csproj", "{9E340D46-0EC5-4028-90EC-61807E4B9D08}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

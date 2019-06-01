@@ -1,15 +1,17 @@
-﻿using System;
-using static SuportCases.PriorityLevel;
-
-namespace SuportCases
+﻿namespace CarService
 {
     public class Program
     {
         public static void Main()
+        {    
+            var tickets = Pocket.GetTickets();
+            Print(tickets);                    
+        }
+        public static void Print(Pocket[] tickets)
         {
-            var tickets = SupportTicket.ReadSupportTickets();
-            SupportTicket.Quick3Sort(tickets, 0, tickets.Length - 1);
-            SupportTicket.Print(tickets);                    
-        }      
+            for (var i = tickets.Length - 1; i >= 0; i--)
+                System.Console.WriteLine(tickets[i].CarNumber + " - " + tickets[i].Problem + " - " + tickets[i].Priority);
+            System.Console.Read();
+        }
     }
 }

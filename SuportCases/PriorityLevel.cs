@@ -1,32 +1,33 @@
-﻿namespace SuportCases
+﻿namespace CarService
 {
-    public class PriorityLevel
+    public class Points
     {
-        public enum Level
+        public enum WaitingTime
         {
-            Low = 16,
-            Medium = 8,
-            Important = 4,
-            Critical = 2
+            Scheduled = 16,
+            Delegated = 8,
+            Deadline = 4,
+            Urgent = 2
         }
-        public readonly Level Priority;
+        readonly WaitingTime Priority;
 
-        public PriorityLevel(Level priority)
+        Points(WaitingTime points)
         {
-            Priority = priority;
+            Priority = points;
         }
-        public static Level GetPriorityLevel(string priority)
+
+        public static WaitingTime GetPriorityLevel(string pointsPriority)
         {
-            switch (priority.ToLower().Trim())
+            switch (pointsPriority.ToLower().Trim())
             {
-                case "critical":
-                    return Level.Critical;
-                case "important":
-                    return Level.Important;
-                case "medium":
-                    return Level.Medium;
+                case "urgent":
+                    return Points.WaitingTime.Urgent;
+                case "deadLine":
+                    return Points.WaitingTime.Deadline;
+                case "delegated":
+                    return Points.WaitingTime.Delegated;
             }
-            return Level.Low;
+            return Points.WaitingTime.Scheduled;
         }
     }
 }
