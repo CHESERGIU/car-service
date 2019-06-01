@@ -5,17 +5,11 @@ namespace CarService
 {
     public class Program
     {
-        public static void Main() => Print(Tickets(Console.ReadLine()?.Split('-')));
-
-        public static Pocket Tickets(string[] input)
+        public static void Main() => Print((Console.ReadLine()?.Split('-')));
+        
+        public static void Print(string[] input)
         {
-            var tickets = new Pocket(input[0], input[1].Trim(), GetWaitingTime(input[2]));
-            return tickets;
-        }
-
-        public static void Print(Pocket tickets)
-        {
-            Console.WriteLine(tickets.CarNumber + " - " + tickets.Problem + " - " + tickets.Priority);
+            Console.WriteLine("{0} - {1} - {2}", input[0], input[1].Trim(), GetWaitingTime(input[2]));
             Console.Read();
         }
     }

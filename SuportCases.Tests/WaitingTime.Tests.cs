@@ -1,9 +1,6 @@
-﻿using CarService;
-using System;
-using Xunit;
+﻿using Xunit;
 
-
-namespace SupportCases
+namespace CarService.Tests
 {
     public class PriorityLevelTests
     {
