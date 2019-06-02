@@ -1,4 +1,4 @@
-using System;
+using System.Collections;
 using Xunit;
 
 namespace CarService.Tests
@@ -8,16 +8,20 @@ namespace CarService.Tests
         [Fact]
         public void When_tickets_for_support_request_are_1_must_return_1()
         {
-            var ticket1 = new Pocket("CJ01ABC", "Direction check", WaitingTime.Delegated);
-            var ticket2 = new Pocket("CJ02DEF", "Lights not working", WaitingTime.DeadLine);
-            var ticket3 = new Pocket("CJ03GHI ", "Battery drain", WaitingTime.Scheduled);
-            var ticket4 = new Pocket("CJ04JKL  ", "Engine break critical", WaitingTime.Urgent);
+            // ARRANGE
+            var ticket1 = new Ticket("CJ01ABC", "Direction check", WaitingTime.Delegated);
+            var ticket2 = new Ticket("CJ02DEF", "Lights not working", WaitingTime.DeadLine);
 
-            Pocket[] tickets = { ticket1, ticket2, ticket3, ticket4 };
+            var pocket = new Queue();
+
+            pocket.Enqueue(ticket1);
+            pocket.Enqueue(ticket2);
             
-            Pocket[] resultTickets = { ticket1, ticket2, ticket3, ticket4 };
+            //// ACT
+            var actual = pocket.Dequeue();
 
-            Assert.Equal(resultTickets, tickets);
+            //// ASSERT
+            Assert.Equal(ticket1, actual);
         }
     }
 }

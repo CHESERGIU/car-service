@@ -1,4 +1,5 @@
-﻿using Xunit;
+﻿using System.Collections;
+using Xunit;
 
 namespace CarService.Tests
 {
@@ -9,14 +10,17 @@ namespace CarService.Tests
         {
             var ticket1 = WaitingTime.Delegated;
             var ticket2 = WaitingTime.DeadLine;
-            var ticket3 = WaitingTime.Scheduled;
-            var ticket4 = WaitingTime.Urgent;
 
-            WaitingTime[] tickets = { ticket1, ticket2, ticket3, ticket4 };
+            var pocket = new Queue();
 
-            WaitingTime[] resultTickets = { ticket1, ticket2, ticket3, ticket4 };
+            pocket.Enqueue(ticket1);
+            pocket.Enqueue(ticket2);
 
-            Assert.Equal(resultTickets, tickets);
+            //// ACT
+            var actual = pocket.Dequeue();
+
+            //// ASSERT
+            Assert.Equal(ticket1, actual);
         }
     }
 }

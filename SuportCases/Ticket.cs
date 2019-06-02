@@ -3,20 +3,20 @@ using static CarService.WaitingTime;
 
 namespace CarService
 {
-    public class Pocket
+    public class Ticket
     {
          public readonly string CarNumber;
          public readonly string Problem;
          public readonly WaitingTime Priority;
 
-        public Pocket(string id, string problem, WaitingTime priority)
+        public Ticket(string id, string problem, WaitingTime priority)
         {
             this.CarNumber = id;
             this.Problem = problem;
             this.Priority = priority;
         }
 
-        private static WaitingTime GetWaitingTime(string priority)
+        private WaitingTime GetWaitingTime(string priority)
         {
             switch (priority.ToLower().Trim())
             {
