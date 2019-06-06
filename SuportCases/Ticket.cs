@@ -15,7 +15,7 @@ namespace CarService
             this.Problem = problem;
             this.Priority = priority;
         }
-
+        
         private WaitingTime GetWaitingTime(string priority)
         {
             switch (priority.ToLower().Trim())
