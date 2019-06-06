@@ -11,12 +11,11 @@ namespace CarService.Tests
             // ARRANGE
             var ticket1 = new Ticket("CJ01ABC", "Direction check", WaitingTime.Delegated);
             var ticket2 = new Ticket("CJ02DEF", "Lights not working", WaitingTime.DeadLine);
-
-            var pocket = new Queue();
+            var ticket3 = new Ticket("CJ02GHI", "Lights not working", WaitingTime.Scheduled);
+            var pocket = new Pocket();
 
             pocket.Enqueue(ticket1);
-            pocket.Enqueue(ticket2);
-            
+           
             //// ACT
             var actual = pocket.Dequeue();
 
