@@ -4,15 +4,16 @@ namespace CarService
 {
     public class Payment
     {
-        public Ticket Receipt;
-        
+        private Ticket dispatcher;
+
         public void Enqueue(Ticket ticket)
         {
-            Receipt = ticket;
+            dispatcher = ticket;
         }
+
         public object Dequeue()
         {
-            return Receipt;
+            return dispatcher;
         }
     }
 }

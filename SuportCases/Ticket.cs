@@ -1,35 +1,36 @@
 ﻿using System;
-using static CarService.WaitingTime;
+using static CarService.WaitingTimes;
 
 namespace CarService
 {
     public class Ticket
     {
-         public readonly string CarNumber;
-         public readonly string Problem;
-         public readonly WaitingTime Priority;
-
-        public Ticket(string id, string problem, WaitingTime priority)
+        public Ticket(string id, string problem, WaitingTimes priority)
         {
             this.CarNumber = id;
             this.Problem = problem;
             this.Priority = priority;
         }
-        
-        private WaitingTime GetWaitingTime(string priority)
+
+        public string CarNumber { get; }
+
+        public string Problem { get; }
+
+        public WaitingTimes Priority { get; }
+
+        private WaitingTimes GetWaitingTime(string priority)
         {
             switch (priority.ToLower().Trim())
             {
                 case "urgent":
-                    return WaitingTime.Urgent;
+                    return WaitingTimes.Urgent;
                 case "deadline":
-                    return WaitingTime.DeadLine;
+                    return WaitingTimes.DeadLine;
                 case "delegated":
-                    return WaitingTime.Delegated;
+                    return WaitingTimes.Delegated;
             }
-            return WaitingTime.Scheduled;
-        }
 
-       
+            return WaitingTimes.Scheduled;
+        }
     }
 }
