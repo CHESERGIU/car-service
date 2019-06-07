@@ -60,6 +60,24 @@ namespace CarService.Tests
             // ASSERT
             Assert.Equal(b, actual);
         }
-        
+        [Fact]
+        public void When_have_a_test_with_priority_urgent()
+        {
+            // ARRANGE
+            var a = new Ticket("A", "A", WaitingTime.Urgent);
+            var b = new Ticket("B", "B", WaitingTime.Scheduled);
+            var c = new Ticket("C", "C", WaitingTime.Delegated);
+            var pocket = new Pocket();
+            pocket.Enqueue(a);
+            pocket.Enqueue(b);
+            pocket.Enqueue(c);
+
+            // ACT
+            var actual = pocket.Dequeue();
+
+            // ASSERT
+            Assert.Equal(c, actual);
+        }
+
     }
 }
