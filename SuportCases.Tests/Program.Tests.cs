@@ -30,11 +30,11 @@ namespace CarService.Tests
             var ticket3 = new Ticket("CJ02GHI", "Change oil", WaitingTimes.Scheduled);
             var payment = new Dispatcher();
 
-            void Paid(Ticket ticket) => payment.Enqueue(ticket);
+            void Dispatcher(Ticket ticket) => payment.Enqueue(ticket);
 
-            Paid(ticket1);
-            Paid(ticket2);
-            Paid(ticket3);
+            Dispatcher(ticket1);
+            Dispatcher(ticket2);
+            Dispatcher(ticket3);
             //// ACT
             var actual = payment.Dequeue();
 
