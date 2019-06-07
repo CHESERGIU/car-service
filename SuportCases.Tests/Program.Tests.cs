@@ -10,13 +10,13 @@ namespace CarService.Tests
         {
             // ARRANGE
             var ticket1 = new Ticket("CJ01ABC", "Direction check", WaitingTime.Delegated);
-            
-            var pocket = new Pocket();
 
-            pocket.Enqueue(ticket1);
+            var payment = new Payment();
+
+            payment.Enqueue(ticket1);
             
             //// ACT
-            var actual = pocket.Dequeue();
+            var actual = payment.Dequeue();
 
             //// ASSERT
             Assert.Equal(ticket1, actual);
@@ -29,17 +29,17 @@ namespace CarService.Tests
             var ticket1 = new Ticket("CJ01ABC", "Direction check", WaitingTime.Delegated);
             var ticket2 = new Ticket("CJ02DEF", "Lights not working", WaitingTime.DeadLine);
             var ticket3 = new Ticket("CJ02GHI", "Change oil", WaitingTime.Scheduled);
-            var pocket = new Pocket();
+            var payment = new Payment();
 
-            void Pocket(Ticket ticket) => pocket.Enqueue(ticket);
+            void Paid(Ticket ticket) => payment.Enqueue(ticket);
 
-            Pocket(ticket1);
-            Pocket(ticket2);
-            Pocket(ticket3);
+            Paid(ticket1);
+            Paid(ticket2);
+            Paid(ticket3);
 
 
             //// ACT
-            var actual = pocket.Dequeue();
+            var actual = payment.Dequeue();
 
             //// ASSERT
             Assert.Equal(ticket3, actual);
@@ -50,12 +50,14 @@ namespace CarService.Tests
             // ARRANGE
             var a = new Ticket("A", "A", WaitingTime.Delegated);
             var b = new Ticket("B", "B", WaitingTime.Urgent);
-            var pocket = new Pocket();
-            pocket.Enqueue(a);
-            pocket.Enqueue(b);
+            var payment = new Payment();
+
+            payment.Enqueue(a);
+            
+            payment.Enqueue(b);
 
             // ACT
-            var actual = pocket.Dequeue();
+            var actual = payment.Dequeue();
 
             // ASSERT
             Assert.Equal(b, actual);
@@ -67,13 +69,14 @@ namespace CarService.Tests
             var a = new Ticket("A", "A", WaitingTime.Urgent);
             var b = new Ticket("B", "B", WaitingTime.Scheduled);
             var c = new Ticket("C", "C", WaitingTime.Delegated);
-            var pocket = new Pocket();
-            pocket.Enqueue(a);
-            pocket.Enqueue(b);
-            pocket.Enqueue(c);
+            var payment = new Payment();
+
+            payment.Enqueue(a);
+            payment.Enqueue(b);
+            payment.Enqueue(c);
 
             // ACT
-            var actual = pocket.Dequeue();
+            var actual = payment.Dequeue();
 
             // ASSERT
             Assert.Equal(c, actual);

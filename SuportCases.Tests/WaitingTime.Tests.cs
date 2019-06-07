@@ -10,10 +10,10 @@ namespace CarService.Tests
         {
             Ticket ticket1 = new Ticket("1", "1", WaitingTime.Delegated);
             
-            var pocket = new Pocket();
-            pocket.Enqueue(ticket1);
+            var payment = new Payment();
+            payment.Enqueue(ticket1);
             //// ACT
-            var actual = pocket.Dequeue();
+            var actual = payment.Dequeue();
             //// ASSERT
             Assert.Equal(ticket1, actual);
         }
@@ -24,14 +24,14 @@ namespace CarService.Tests
             Ticket ticket2 = new Ticket("2", "2", WaitingTime.DeadLine);
             Ticket ticket3 = new Ticket("3", "3", WaitingTime.Scheduled);
 
-            var pocket = new Pocket();
+            var payment = new Payment();
 
-            pocket.Enqueue(ticket1);
-            pocket.Enqueue(ticket2);
-            pocket.Enqueue(ticket3);
+            payment.Enqueue(ticket1);
+            payment.Enqueue(ticket2);
+            payment.Enqueue(ticket3);
 
             //// ACT
-            var actual = pocket.Dequeue();
+            var actual = payment.Dequeue();
 
             //// ASSERT
             Assert.Equal(ticket3, actual);
