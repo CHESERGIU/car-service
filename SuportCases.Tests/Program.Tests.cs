@@ -28,17 +28,38 @@ namespace CarService.Tests
             // ARRANGE
             var ticket1 = new Ticket("CJ01ABC", "Direction check", WaitingTime.Delegated);
             var ticket2 = new Ticket("CJ02DEF", "Lights not working", WaitingTime.DeadLine);
-            var ticket3 = new Ticket("CJ02GHI", "Lights not working", WaitingTime.Scheduled);
+            var ticket3 = new Ticket("CJ02GHI", "Change oil", WaitingTime.Scheduled);
             var pocket = new Pocket();
 
-            pocket.Enqueue(ticket1);
-            pocket.Enqueue(ticket2);
-            pocket.Enqueue(ticket3);
+            void Pocket(Ticket ticket) => pocket.Enqueue(ticket);
+
+            Pocket(ticket1);
+            Pocket(ticket2);
+            Pocket(ticket3);
+
+
             //// ACT
             var actual = pocket.Dequeue();
 
             //// ASSERT
             Assert.Equal(ticket3, actual);
         }
+        [Fact]
+        public void When_have_a_test()
+        {
+            // ARRANGE
+            var a = new Ticket("A", "A", WaitingTime.Delegated);
+            var b = new Ticket("B", "B", WaitingTime.Urgent);
+            var pocket = new Pocket();
+            pocket.Enqueue(a);
+            pocket.Enqueue(b);
+
+            // ACT
+            var actual = pocket.Dequeue();
+
+            // ASSERT
+            Assert.Equal(b, actual);
+        }
+        
     }
 }
