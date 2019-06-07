@@ -9,7 +9,7 @@ namespace CarService.Tests
         public void WhenTicketsForSupportRequestAre1MustReturn1()
         {
             Ticket ticket1 = new Ticket("1", "1", WaitingTimes.Delegated);
-            var payment = new Payment();
+            var payment = new Dispatcher();
             payment.Enqueue(ticket1);
             //// ACT
             var actual = payment.Dequeue();
@@ -24,7 +24,7 @@ namespace CarService.Tests
             Ticket ticket2 = new Ticket("2", "2", WaitingTimes.DeadLine);
             Ticket ticket3 = new Ticket("3", "3", WaitingTimes.Scheduled);
 
-            var payment = new Payment();
+            var payment = new Dispatcher();
 
             payment.Enqueue(ticket1);
             payment.Enqueue(ticket2);

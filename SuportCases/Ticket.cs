@@ -18,6 +18,8 @@ namespace CarService
 
         public WaitingTimes Priority { get; }
 
+        public int Length { get; set; }
+
         private WaitingTimes GetWaitingTime(string priority)
         {
             switch (priority.ToLower().Trim())

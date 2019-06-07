@@ -11,7 +11,7 @@ namespace CarService.Tests
             // ARRANGE
             var ticket1 = new Ticket("CJ01ABC", "Direction check", WaitingTimes.Delegated);
 
-            var payment = new Payment();
+            var payment = new Dispatcher();
 
             payment.Enqueue(ticket1);
             //// ACT
@@ -28,7 +28,7 @@ namespace CarService.Tests
             var ticket1 = new Ticket("CJ01ABC", "Direction check", WaitingTimes.Delegated);
             var ticket2 = new Ticket("CJ02DEF", "Lights not working", WaitingTimes.DeadLine);
             var ticket3 = new Ticket("CJ02GHI", "Change oil", WaitingTimes.Scheduled);
-            var payment = new Payment();
+            var payment = new Dispatcher();
 
             void Paid(Ticket ticket) => payment.Enqueue(ticket);
 
@@ -48,7 +48,7 @@ namespace CarService.Tests
             // ARRANGE
             var a = new Ticket("A", "A", WaitingTimes.Delegated);
             var b = new Ticket("B", "B", WaitingTimes.Urgent);
-            var payment = new Payment();
+            var payment = new Dispatcher();
 
             payment.Enqueue(a);
             payment.Enqueue(b);
@@ -67,7 +67,7 @@ namespace CarService.Tests
             var a = new Ticket("A", "A", WaitingTimes.Urgent);
             var b = new Ticket("B", "B", WaitingTimes.Scheduled);
             var c = new Ticket("C", "C", WaitingTimes.Delegated);
-            var payment = new Payment();
+            var payment = new Dispatcher();
 
             payment.Enqueue(a);
             payment.Enqueue(b);
