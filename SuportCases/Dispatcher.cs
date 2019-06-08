@@ -4,18 +4,14 @@ namespace CarService
 {
     public class Dispatcher
     {
-        private Ticket tickets;
-
-        private Ticket[] queueTickets;
-
-        public Dispatcher() => queueTickets = new[] { tickets };
+        internal Ticket[] Tickets;
 
         public void Enqueue(Ticket ticket)
         {
-            tickets = ticket;
-            Array.Resize(ref queueTickets, tickets.Length + ticket.Length);
+            Tickets = new[] { ticket };
+            Array.Resize(ref Tickets, Tickets.Length);
         }
 
-        public object Dequeue() => tickets;
+        public Ticket Dequeue() => Tickets[0];
     }
 }
