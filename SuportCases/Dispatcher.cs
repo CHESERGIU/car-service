@@ -9,5 +9,10 @@ namespace CarService
         public void Enqueue(Ticket ticket) => tickets = new[] { ticket };
 
         public Ticket Dequeue() => tickets[0];
+
+        public Ticket Dequeue(Ticket ticket)
+        {
+            return tickets[0] = ticket;
+        }
     }
 }

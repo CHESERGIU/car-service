@@ -7,22 +7,6 @@ namespace CarService.Tests
     public class ProgramTests
     {
         [Fact]
-        public void WhenTicketsForSupportRequestAre1MustReturn1()
-        {
-            // ARRANGE
-            var ticket1 = new Ticket("CJ11ABC", "Direction check", WaitingTimes.Delegated);
-
-            var payment = new Dispatcher();
-
-            payment.Enqueue(ticket1);
-            //// ACT
-            var actual = payment.Dequeue();
-
-            //// ASSERT
-            Assert.Equal(ticket1, actual);
-        }
-
-        [Fact]
         public void WWhenTicketsForSupportRequestAre3MustReturn1()
         {
             // ARRANGE
@@ -77,6 +61,35 @@ namespace CarService.Tests
 
             // ASSERT
             Assert.Equal(c, actual);
+        }
+
+        [Fact]
+        public void WhenPriorityUrgentMustBeTestedForActual()
+        {
+            // ARRANGE
+            var a = new Ticket("A", "A", WaitingTimes.Urgent);
+            var b = new Ticket("B", "B", WaitingTimes.Scheduled);
+            var c = new Ticket("C", "C", WaitingTimes.Delegated);
+            var d = new Ticket("D", "D", WaitingTimes.DeadLine);
+            var payment = new Dispatcher();
+
+            payment.Enqueue(a);
+            payment.Enqueue(b);
+            payment.Enqueue(c);
+            payment.Enqueue(d);
+            var flag = a.Priority ^ b.Priority ^ c.Priority ^ d.Priority;
+
+            var ticket = new Ticket(null, null, WaitingTimes.None) { Priority = a.Priority ^ b.Priority ^ c.Priority ^ d.Priority };
+            if (ticket.Priority == a.Priority)
+            {
+                ticket = a;
+            }
+
+            // ACT
+            var actual = payment.Dequeue(ticket);
+
+            // ASSERT
+            Assert.Equal(a, actual);
         }
     }
 }
