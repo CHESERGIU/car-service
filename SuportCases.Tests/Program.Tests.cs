@@ -64,43 +64,40 @@ namespace CarService.Tests
         [Fact]
         public void WhenPriorityUrgentMustBeTestedForActual()
         {
+            var payment = new Dispatcher();
+            var priority = new Dispatcher();
+            Ticket actual = null;
+
             // ARRANGE
             var a = new Ticket("A", "A", WaitingTimes.Delegated);
             var b = new Ticket("B", "B", WaitingTimes.Scheduled);
             var c = new Ticket("C", "C", WaitingTimes.Urgent);
             var d = new Ticket("D", "D", WaitingTimes.DeadLine);
-            var payment = new Dispatcher();
-
             payment.Enqueue(a);
             payment.Enqueue(b);
             payment.Enqueue(c);
             payment.Enqueue(d);
 
-            var ticket = new Ticket(null, null, WaitingTimes.None);
-            var priority = new Dispatcher();
-
+            // ACT
             if (priority.Check(a))
             {
-                ticket = a;
+                actual = payment.Dequeue(a);
             }
 
             if (priority.Check(b))
             {
-                ticket = b;
+                actual = payment.Dequeue(b);
             }
 
             if (priority.Check(c))
             {
-                ticket = c;
+                actual = payment.Dequeue(c);
             }
 
             if (priority.Check(d))
             {
-                ticket = d;
+                actual = payment.Dequeue(d);
             }
-
-            // ACT
-            var actual = payment.Dequeue(ticket);
 
             // ASSERT
             Assert.Equal(c, actual);

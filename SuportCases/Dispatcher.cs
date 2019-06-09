@@ -4,7 +4,7 @@
     {
         private static Ticket[] tickets;
 
-        public bool Check(Ticket actual) => actual.Priority == WaitingTimes.Urgent;
+        public bool Check(Ticket actual) => actual?.Priority == WaitingTimes.Urgent;
 
         public void Enqueue(Ticket ticket) => tickets = new[] { ticket };
 
