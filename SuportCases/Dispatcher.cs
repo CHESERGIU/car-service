@@ -6,6 +6,17 @@ namespace CarService
     {
         private static Ticket[] tickets;
 
+        public static Ticket Check(Ticket ticket, Ticket actual)
+        {
+            var check = ticket;
+            if (actual != null && (ticket != null && ticket.Priority == actual.Priority))
+            {
+                ticket = actual;
+            }
+
+            return ticket;
+        }
+
         public void Enqueue(Ticket ticket) => tickets = new[] { ticket };
 
         public Ticket Dequeue() => tickets[0];

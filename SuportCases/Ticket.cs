@@ -12,13 +12,13 @@ namespace CarService
             this.Priority = priority;
         }
 
-        public string CarNumber { get; }
+        public string CarNumber { get; set; }
 
-        public string Problem { get; }
+        public string Problem { get; set; }
 
         public WaitingTimes Priority { get; set; }
 
-        WaitingTimes GetWaitingTime(string priority)
+        private WaitingTimes GetWaitingTime(string priority)
         {
             switch (priority.ToLower().Trim())
             {

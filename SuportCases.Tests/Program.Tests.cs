@@ -67,9 +67,9 @@ namespace CarService.Tests
         public void WhenPriorityUrgentMustBeTestedForActual()
         {
             // ARRANGE
-            var a = new Ticket("A", "A", WaitingTimes.Urgent);
+            var a = new Ticket("A", "A", WaitingTimes.Delegated);
             var b = new Ticket("B", "B", WaitingTimes.Scheduled);
-            var c = new Ticket("C", "C", WaitingTimes.Delegated);
+            var c = new Ticket("C", "C", WaitingTimes.Urgent);
             var d = new Ticket("D", "D", WaitingTimes.DeadLine);
             var payment = new Dispatcher();
 
@@ -77,19 +77,18 @@ namespace CarService.Tests
             payment.Enqueue(b);
             payment.Enqueue(c);
             payment.Enqueue(d);
-            var flag = a.Priority ^ b.Priority ^ c.Priority ^ d.Priority;
 
-            var ticket = new Ticket(null, null, WaitingTimes.None) { Priority = a.Priority ^ b.Priority ^ c.Priority ^ d.Priority };
-            if (ticket.Priority == a.Priority)
-            {
-                ticket = a;
-            }
+            var ticket = new Ticket(null, null, WaitingTimes.Urgent);
+            ticket = Dispatcher.Check(ticket, a);
+            ticket = Dispatcher.Check(ticket, b);
+            ticket = Dispatcher.Check(ticket, c);
+            ticket = Dispatcher.Check(ticket, d);
 
             // ACT
             var actual = payment.Dequeue(ticket);
 
             // ASSERT
-            Assert.Equal(a, actual);
+            Assert.Equal(c, actual);
         }
     }
 }
