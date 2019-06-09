@@ -1,7 +1,4 @@
-﻿using System;
-using static CarService.WaitingTimes;
-
-namespace CarService
+﻿namespace CarService
 {
     public class Ticket
     {

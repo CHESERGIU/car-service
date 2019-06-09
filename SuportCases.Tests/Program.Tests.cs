@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using Xunit;
 
 namespace CarService.Tests
@@ -78,11 +76,28 @@ namespace CarService.Tests
             payment.Enqueue(c);
             payment.Enqueue(d);
 
-            var ticket = new Ticket(null, null, WaitingTimes.Urgent);
-            ticket = Dispatcher.Check(ticket, a);
-            ticket = Dispatcher.Check(ticket, b);
-            ticket = Dispatcher.Check(ticket, c);
-            ticket = Dispatcher.Check(ticket, d);
+            var ticket = new Ticket(null, null, WaitingTimes.None);
+            var priority = new Dispatcher();
+
+            if (priority.Check(a))
+            {
+                ticket = a;
+            }
+
+            if (priority.Check(b))
+            {
+                ticket = b;
+            }
+
+            if (priority.Check(c))
+            {
+                ticket = c;
+            }
+
+            if (priority.Check(d))
+            {
+                ticket = d;
+            }
 
             // ACT
             var actual = payment.Dequeue(ticket);
