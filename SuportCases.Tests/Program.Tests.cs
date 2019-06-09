@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Xunit;
 
@@ -9,7 +10,7 @@ namespace CarService.Tests
         public void WhenTicketsForSupportRequestAre1MustReturn1()
         {
             // ARRANGE
-            var ticket1 = new Ticket("CJ01ABC", "Direction check", WaitingTimes.Delegated);
+            var ticket1 = new Ticket("CJ11ABC", "Direction check", WaitingTimes.Delegated);
 
             var payment = new Dispatcher();
 
@@ -30,11 +31,9 @@ namespace CarService.Tests
             var ticket3 = new Ticket("CJ02GHI", "Change oil", WaitingTimes.Scheduled);
             var payment = new Dispatcher();
 
-            void Dispatcher(Ticket ticket) => payment.Enqueue(ticket);
-
-            Dispatcher(ticket1);
-            Dispatcher(ticket2);
-            Dispatcher(ticket3);
+            payment.Enqueue(ticket1);
+            payment.Enqueue(ticket2);
+            payment.Enqueue(ticket3);
             //// ACT
             var actual = payment.Dequeue();
 

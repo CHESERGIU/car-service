@@ -8,13 +8,13 @@ namespace CarService.Tests
         [Fact]
         public void WhenTicketsForSupportRequestAre1MustReturn1()
         {
-            var ticket1 = new Ticket("1", "1", WaitingTimes.Delegated);
+            var ticket = new Ticket("A", "Direction check", WaitingTimes.Urgent);
             var payment = new Dispatcher();
-            payment.Enqueue(ticket1);
+            payment.Enqueue(ticket);
             //// ACT
             var actual = payment.Dequeue();
             //// ASSERT
-            Assert.Equal(ticket1, actual);
+            Assert.Equal(ticket, actual);
         }
 
         [Fact]

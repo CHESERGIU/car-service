@@ -11,9 +11,9 @@ namespace CarService
             var ticket3 = new Ticket("CJ02GHI", "Change oil", WaitingTimes.Scheduled);
 
             Ticket[] tickets = { ticket1, ticket2, ticket3 };
-            for (var i = tickets.Length - 1; i >= 0; i--)
+            foreach (var ticket in tickets)
             {
-                Console.WriteLine(tickets[i].CarNumber + " - " + tickets[i].Problem + " - " + tickets[i].Priority);
+                Console.WriteLine(ticket.CarNumber + " - " + ticket.Problem + " - " + ticket.Priority);
             }
 
             Console.Read();

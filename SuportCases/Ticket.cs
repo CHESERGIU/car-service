@@ -16,11 +16,9 @@ namespace CarService
 
         public string Problem { get; }
 
-        public WaitingTimes Priority { get; }
+        public WaitingTimes Priority { get; set; }
 
-        public int Length { get; set; }
-
-        private WaitingTimes GetWaitingTime(string priority)
+        WaitingTimes GetWaitingTime(string priority)
         {
             switch (priority.ToLower().Trim())
             {
