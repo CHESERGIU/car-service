@@ -10,19 +10,6 @@
 
         public Ticket Dequeue() => tickets[0];
 
-        public Ticket Dequeue(Ticket ticket)
-        {
-            return tickets[0] = ticket;
-        }
-
-        public Ticket Actual(Ticket ticket)
-        {
-            if (Check(ticket))
-            {
-                Dequeue(ticket);
-            }
-
-            return ticket;
-        }
+        public Ticket Dequeue(Ticket ticket) => tickets[0] = ticket;
     }
 }

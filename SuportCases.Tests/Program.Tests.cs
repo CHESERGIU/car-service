@@ -30,7 +30,6 @@ namespace CarService.Tests
             var a = new Ticket("A", "A", WaitingTimes.Delegated);
             var b = new Ticket("B", "B", WaitingTimes.Urgent);
             var payment = new Dispatcher();
-
             payment.Enqueue(a);
             payment.Enqueue(b);
 
@@ -49,7 +48,6 @@ namespace CarService.Tests
             var b = new Ticket("B", "B", WaitingTimes.Scheduled);
             var c = new Ticket("C", "C", WaitingTimes.Delegated);
             var payment = new Dispatcher();
-
             payment.Enqueue(a);
             payment.Enqueue(b);
             payment.Enqueue(c);
@@ -78,10 +76,7 @@ namespace CarService.Tests
             payment.Enqueue(d);
 
             // ACT
-            payment.Actual(a);
-            payment.Actual(b);
-            actual = payment.Actual(c);
-            payment.Actual(d);
+            actual = payment.Dequeue(c);
 
             // ASSERT
             Assert.Equal(c, actual);
