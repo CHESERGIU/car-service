@@ -14,5 +14,15 @@
         {
             return tickets[0] = ticket;
         }
+
+        public Ticket Actual(Ticket ticket)
+        {
+            if (Check(ticket))
+            {
+                Dequeue(ticket);
+            }
+
+            return ticket;
+        }
     }
 }

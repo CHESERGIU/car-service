@@ -65,7 +65,6 @@ namespace CarService.Tests
         public void WhenPriorityUrgentMustBeTestedForActual()
         {
             var payment = new Dispatcher();
-            var priority = new Dispatcher();
             Ticket actual = null;
 
             // ARRANGE
@@ -79,25 +78,10 @@ namespace CarService.Tests
             payment.Enqueue(d);
 
             // ACT
-            if (priority.Check(a))
-            {
-                actual = payment.Dequeue(a);
-            }
-
-            if (priority.Check(b))
-            {
-                actual = payment.Dequeue(b);
-            }
-
-            if (priority.Check(c))
-            {
-                actual = payment.Dequeue(c);
-            }
-
-            if (priority.Check(d))
-            {
-                actual = payment.Dequeue(d);
-            }
+            payment.Actual(a);
+            payment.Actual(b);
+            actual = payment.Actual(c);
+            payment.Actual(d);
 
             // ASSERT
             Assert.Equal(c, actual);
