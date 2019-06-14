@@ -2,22 +2,16 @@
 {
     public class Ticket
     {
-        private readonly string carNumber;
-        private readonly string problem;
-        private readonly WaitingTimes priority;
+        internal readonly string Id;
+        internal readonly string Problem;
+        internal readonly WaitingTimes Priority;
 
         public Ticket(string id, string problem, WaitingTimes priority)
         {
-            this.carNumber = id;
-            this.problem = problem;
-            this.priority = priority;
+            this.Id = id;
+            this.Problem = problem;
+            this.Priority = priority;
         }
-
-        internal string CarNumber => carNumber;
-
-        internal string Problem => problem;
-
-        internal WaitingTimes Priority => priority;
 
         private WaitingTimes GetWaitingTime(string priority)
         {

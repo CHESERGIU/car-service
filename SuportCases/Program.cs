@@ -13,7 +13,7 @@ namespace CarService
             Ticket[] tickets = { a, b, c };
             foreach (var ticket in tickets)
             {
-                Console.WriteLine(ticket.CarNumber + " - " + ticket.Problem + " - " + ticket.Priority);
+                Console.WriteLine(ticket.Id + " - " + ticket.Problem + " - " + ticket.Priority);
             }
 
             Console.Read();
