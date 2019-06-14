@@ -13,11 +13,11 @@
             this.priority = priority;
         }
 
-        public string CarNumber => carNumber;
+        internal string CarNumber => carNumber;
 
-        public string Problem => problem;
+        internal string Problem => problem;
 
-        public WaitingTimes Priority => priority;
+        internal WaitingTimes Priority => priority;
 
         private WaitingTimes GetWaitingTime(string priority)
         {
