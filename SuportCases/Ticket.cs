@@ -2,13 +2,13 @@
 {
     public class Ticket
     {
-        internal readonly string Id;
+        internal readonly string CarNumber;
         internal readonly string Problem;
         internal readonly WaitingTimes Priority;
 
-        public Ticket(string id, string problem, WaitingTimes priority)
+        public Ticket(string carNumber, string problem, WaitingTimes priority)
         {
-            this.Id = id;
+            this.CarNumber = carNumber;
             this.Problem = problem;
             this.Priority = priority;
         }
