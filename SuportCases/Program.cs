@@ -2,7 +2,7 @@
 
 namespace CarService
 {
-    public class Program
+    public static class Program
     {
         public static void Main()
         {
@@ -11,7 +11,6 @@ namespace CarService
             var c = new Ticket(carNumber: "CJ02GHI", problem: "Change oil", priority: WaitingTimes.Scheduled);
 
             Ticket[] tickets = { a, b, c };
-            tickets = Dispatcher.Select(tickets);
             foreach (var ticket in tickets)
             {
                 Console.WriteLine(ticket.CarNumber + " - " + ticket.Problem + " - " + ticket.Priority);

@@ -4,9 +4,7 @@ namespace CarService
 {
     public class Dispatcher
     {
-        private static Ticket[] tickets;
-
-        public static Ticket[] Select(Ticket[] cars)
+        public Ticket[] Select(ref Ticket[] cars)
         {
             if (cars == null)
             {
@@ -27,18 +25,13 @@ namespace CarService
             return cars;
         }
 
-        public void Enqueue(Ticket ticket)
+        public void Enqueue(ref Ticket[] tickets, Ticket ticket)
         {
             Array.Resize(ref tickets, tickets.Length + 1);
             tickets[tickets.Length - 1] = ticket;
         }
 
-        public Ticket Dequeue()
-        {
-            return tickets[0];
-        }
-
-        public Ticket Dequeue(Ticket ticket)
+        public Ticket Dequeue(ref Ticket[] tickets)
         {
             for (int i = 0; i < tickets.Length - 1; i++)
             {

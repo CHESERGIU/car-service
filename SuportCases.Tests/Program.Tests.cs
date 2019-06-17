@@ -7,79 +7,89 @@ namespace CarService.Tests
         [Fact]
         public void WWhenTicketsForSupportRequestAre3MustReturn1()
         {
+            Ticket[] tickets = { };
+            var payment = new Dispatcher();
+
             // ARRANGE
             var ticket1 = new Ticket("CJ01ABC", "Direction check", WaitingTimes.Delegated);
             var ticket2 = new Ticket("CJ02DEF", "Lights not working", WaitingTimes.DeadLine);
             var ticket3 = new Ticket("CJ02GHI", "Change oil", WaitingTimes.Scheduled);
-            var payment = new Dispatcher();
 
-            payment.Enqueue(ticket1);
-            payment.Enqueue(ticket2);
-            payment.Enqueue(ticket3);
+            payment.Enqueue(ref tickets, ticket1);
+            payment.Enqueue(ref tickets, ticket2);
+            payment.Enqueue(ref tickets, ticket3);
             //// ACT
-            var actual = payment.Dequeue();
+            payment.Select(ref tickets);
+            payment.Dequeue(ref tickets);
 
             //// ASSERT
-            Assert.Equal(ticket3, actual);
+            Assert.DoesNotContain(ticket2, tickets);
         }
 
         [Fact]
         public void WhenHaveASingleTest()
         {
+            Ticket[] tickets = { };
+
             // ARRANGE
             var a = new Ticket("A", "A", WaitingTimes.Delegated);
             var b = new Ticket("B", "B", WaitingTimes.Urgent);
             var payment = new Dispatcher();
-            payment.Enqueue(a);
-            payment.Enqueue(b);
+            payment.Enqueue(ref tickets, a);
+            payment.Enqueue(ref tickets, b);
 
             // ACT
-            var actual = payment.Dequeue();
+            payment.Select(ref tickets);
+            var actual = payment.Dequeue(ref tickets);
 
             // ASSERT
-            Assert.Equal(b, actual);
+            Assert.Equal(a, actual);
         }
 
         [Fact]
         public void WhenHaveASingleTestWithPriorityUrgent()
         {
+            Ticket[] tickets = { };
+
             // ARRANGE
             var a = new Ticket("A", "A", WaitingTimes.Urgent);
             var b = new Ticket("B", "B", WaitingTimes.Scheduled);
             var c = new Ticket("C", "C", WaitingTimes.Delegated);
             var payment = new Dispatcher();
-            payment.Enqueue(a);
-            payment.Enqueue(b);
-            payment.Enqueue(c);
+            payment.Enqueue(ref tickets, a);
+            payment.Enqueue(ref tickets, b);
+            payment.Enqueue(ref tickets, c);
 
             // ACT
-            var actual = payment.Dequeue();
+            payment.Select(ref tickets);
+            var actual = payment.Dequeue(ref tickets);
 
             // ASSERT
-            Assert.Equal(c, actual);
+            Assert.DoesNotContain(a, tickets);
         }
 
         [Fact]
         public void WhenPriorityUrgentMustBeTestedForActual()
         {
+            Ticket[] tickets = { };
             var payment = new Dispatcher();
-            Ticket actual = null;
 
             // ARRANGE
             var a = new Ticket("A", "A", WaitingTimes.Delegated);
             var b = new Ticket("B", "B", WaitingTimes.Scheduled);
             var c = new Ticket("C", "C", WaitingTimes.Urgent);
             var d = new Ticket("D", "D", WaitingTimes.DeadLine);
-            payment.Enqueue(a);
-            payment.Enqueue(b);
-            payment.Enqueue(c);
-            payment.Enqueue(d);
+            payment.Enqueue(ref tickets, a);
+            payment.Enqueue(ref tickets, b);
+            payment.Enqueue(ref tickets, c);
+            payment.Enqueue(ref tickets, d);
 
             // ACT
-            actual = payment.Dequeue(c);
+            payment.Select(ref tickets);
+            var actual = payment.Dequeue(ref tickets);
 
             // ASSERT
-            Assert.Equal(c, actual);
+            Assert.DoesNotContain(c, tickets);
         }
     }
 }
